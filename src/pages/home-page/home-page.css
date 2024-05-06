@@ -44,12 +44,25 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	color: white;
 }
 .section2 h1{
 	text-align: center;
 }
 .logo-home{
 	border-radius: 300px;
+}
+.home-btn{
+	max-width: 400px;
+	padding: 15px;
+	transition: .3s ease all;
+	border-radius: 20px;
+	border: none;
+	margin-top: 10px;
+	border-radius: 20px;
+	cursor: pointer;
+	background: linear-gradient(315deg, #66c2e6, #79e6ff);
+	box-shadow: -1px 1px 20px 3px #60b7d9, 0px -1px 13px 0px #82f7ff;
 }
 @media (prefers-color-scheme: dark)
 {

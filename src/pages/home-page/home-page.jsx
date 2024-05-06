@@ -24,7 +24,7 @@ const HomePage = (props) => {
             className='logo-home'
           />
           <h1>Welcome To Lasustech Admission<br/>Companion</h1>
-          <button type='button'>
+          <button type='button' className='home-btn'>
             Click here for more information
           </button>
         </div>
