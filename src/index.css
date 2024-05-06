@@ -1,3 +1,6 @@
+:root{
+	--bg-dark-obsd: #445055;
+}
 body{
 	overflow-x: hidden;
 	scroll-behavior: smooth;

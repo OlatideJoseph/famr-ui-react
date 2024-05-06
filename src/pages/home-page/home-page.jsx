@@ -8,9 +8,9 @@ const HomePage = (props) => {
     >
       <div className='container'>
         <div className='section1'>
-          <h1>
+          <h2>
             Welcome To Your Path Of Excellence !
-          </h1>
+          </h2>
           <p>
             Your Pursuit Of Knowledge, Your Dream Career, And Your Aspirations - It All
             Begins Here, We're Not Just App; We're Your Trusted Companion On This Exciting Journery
