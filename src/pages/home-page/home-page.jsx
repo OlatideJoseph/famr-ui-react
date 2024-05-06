@@ -18,6 +18,15 @@ const HomePage = (props) => {
           </p>
         </div>
         <div className='section2'>
+          <img
+            src='./logo.jpeg'
+            alt='Lasustech Logo'
+            className='logo-home'
+          />
+          <h1>Welcome To Lasustech Admission<br/>Companion</h1>
+          <button type='button'>
+            Click here for more information
+          </button>
         </div>
       </div>
     </div>

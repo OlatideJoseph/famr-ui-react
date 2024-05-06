@@ -1,37 +1,76 @@
 .container{
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	flex-direction: row;
 	justify-content: flex-start;
 }
 .section1, .section2{
 	width: 50%;
-	height: 98vh;
+	height: 100vh;
 	padding: 0;
+}
+.section1::before{
+	content: '';
+	background-image: url('./unsplash-img-home.jpg');
+	height: 100vh;
+	position: absolute;
+	background-position: center;
+	object-fit: cover;
+	object-position: center;
+	background-size: cover;
+	z-index: -3;
+	background-repeat: no-repeat;
+	width: 100%;
+	filter: brightness(.5);
 }
 .section1{
 	display: flex;
 	justify-content: space-between;
 	flex-direction: column;
+	background: transparent;
 	align-items: center;
 	flex-wrap: nowrap;
+	color: white;
 }
 .section1 p{
 	text-align: center;
 }
-.section1 2{
+.section1 h2{
 	text-align: center;
 }
 
+.section2{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.section2 h1{
+	text-align: center;
+}
+.logo-home{
+	border-radius: 300px;
+}
 @media (prefers-color-scheme: dark)
 {
 	.section2{
 		background: var(--bg-dark-obsd);
+	}
+	.section2{
+		color: white<;
 	}
 }
 @media (prefers-color-scheme: light)
 {
 	.section2{
 		background: white;
+	}
+}
+@media screen and (max-width: 800px){
+	.container{
+		flex-direction: column;
+	}
+	.section1, .section2{
+		width: 100%;
 	}
 }
