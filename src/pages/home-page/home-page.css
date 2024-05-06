@@ -11,7 +11,7 @@
 }
 .section1::before{
 	content: '';
-	background-image: url('./unsplash-img-home.jpg');
+	background-image: url('/unsplash-img-home.jpg');
 	height: 100vh;
 	position: absolute;
 	background-position: center;
