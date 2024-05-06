@@ -1,0 +1,20 @@
+.container{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+.section1, .section2{
+	width: 50%;
+	height: 98vh;
+	padding: 0;
+}
+.section1{
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	flex-wrap: nowrap;
+}
+.section1 p{
+	text-align: center;
+}
