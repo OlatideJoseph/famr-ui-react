@@ -1,7 +1,13 @@
 import * as React from 'react'
+import { useNavigate } from 'react-router-dom'
 import './home-page.css'
 
 const HomePage = (props) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/sign-in/')
+    console.log('click')
+  }
   return (
     <div
       className='home-section'
@@ -24,7 +30,11 @@ const HomePage = (props) => {
             className='logo-home'
           />
           <h1>Welcome To Lasustech Admission<br/>Companion</h1>
-          <button type='button' className='home-btn'>
+          <button
+            type='button'
+            onClick={ handleClick }
+            className='home-btn'
+          >
             Click here for more information
           </button>
         </div>
