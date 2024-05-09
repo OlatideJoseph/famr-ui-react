@@ -1,9 +1,15 @@
 import * as React from 'react'
+import NavBar from '../../components/navbar/navbar'
 import './notfound.css'
 
 const NotFoundPage = () => {
-	return (
-    <h1>Not Found</h1>
+  return (
+    <div className='error-page'>
+      <NavBar/>
+      <div className='container-fluid col-md-8'>
+        <h1>Page Not Found !</h1>
+      </div>
+    </div>
   )
 }
 

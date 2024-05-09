@@ -1,21 +1,19 @@
 import * as React from 'react'
 import NavBar from '../../components/navbar/navbar'
 import BootStrapButton from '../../components/buttons/bootstrap-button'
+import './sign-up.css'
 
-const LoginPage = () => {
+const SignUpPage = (props) => {
   const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(event)
-    console.log("submitted")
+    event.preventDefault()
+    console.log("Submitted")
   }
 	return (
-    <div
-      className='login-page'
-    >
+    <div className='sign-up-page'>
       <NavBar/>
       <div className='container-fluid col-md-8'>
         <fieldset className="form card mt-3 bg-secondary text-light">
-          <legend className="card-header text-center">Login Form</legend>
+          <legend className="card-header text-center">Sign Up Form</legend>
           <form method="post" className="card-body" onSubmit={ handleSubmit }>
             <div className="row">
               <div className="col">
@@ -32,17 +30,17 @@ const LoginPage = () => {
                 className="btn-primary btn-sm mt-3"
                 type="submit"
               >
-                Authenticate Data
+                Submit Data
               </BootStrapButton>
               <div className="card-footer text-center">
-                Create an account ? <a href="/sign-up/" className="link text-light">Sign up!</a>
+                Already have an account? <a href="/sign-in/" className="link text-light">Log In!</a>
               </div>
             </div>
           </form>
         </fieldset>
       </div>
     </div>
-	)
+  )
 }
 
-export default LoginPage
+export default SignUpPage
