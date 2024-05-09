@@ -29,7 +29,7 @@ const NavBar = () => {
                     </li>
                     <li className="nav-item" tabIndex="-1">
                         <button type="button" id="nav-bnt" className="auth nav-item  btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style={{display: "none"}}>
-                            Logout
+                          Logout
                         </button>
                     </li>
                 </ul>
