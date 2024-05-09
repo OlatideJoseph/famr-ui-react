@@ -12,7 +12,7 @@ const HomePage = (props) => {
     <div
       className='home-section'
     >
-      <div className='container'>
+      <div className='container-home'>
         <div className='section1'>
           <h2>
             Welcome To Your Path Of Excellence !

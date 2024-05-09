@@ -1,4 +1,4 @@
-.container{
+.container-home{
 	display: flex;
 	flex-wrap: nowrap;
 	flex-direction: row;
@@ -67,7 +67,7 @@
 @media (prefers-color-scheme: dark)
 {
 	.section2{
-		background: var(--bg-dark-obsd);
+		background: var(--bg-dark);
 	}
 	.section2{
 		color: white<;
@@ -80,7 +80,7 @@
 	}
 }
 @media screen and (max-width: 800px){
-	.container{
+	.container-home{
 		flex-direction: column;
 	}
 	.section1, .section2{
