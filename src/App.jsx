@@ -10,7 +10,7 @@ const HomePage = React.lazy(() => (import('./pages/home-page/home-page')))
 
 import './App.css'
 
-const defaultUrl = 'https://nd2project.onrender.com/'
+const defaultUrl = 'http://localhost:5000/'
 
 const App = () => {
   return (
