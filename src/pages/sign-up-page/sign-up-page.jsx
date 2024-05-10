@@ -18,12 +18,36 @@ const SignUpPage = (props) => {
           <form method="post" className="card-body" onSubmit={ handleSubmit }>
             <div className="row">
               <div className="col">
+                <label className="form-label" htmlFor="email">Email: </label>
+                <input className="form-control" id="email" name="email" type="text" defaultValue=""/>
+              </div>
+              <div className="col">
                 <label className="form-label" htmlFor="username">Username: </label>
-                <input className="form-control" id="username" name="username" required="" type="text" defaultValue=""/>
+                <input className="form-control" id="username" name="username" type="text" defaultValue=""/>
+              </div>            
+            </div>
+            <div className="row">
+              <div className="col">
+                <label className="form-label" htmlFor="firstname">*FirstName*: </label>
+                <input className="form-control" name="firstname" type="text" defaultValue=""/>
               </div>            
               <div className="col">
-                <label className="form-label" htmlFor="password">Password: </label>
-                <input className="form-control" id="password" name="password" required="" type="password" defaultValue=""/>
+                <label className="form-label" htmlFor="middlename">*Middle Name*: </label>
+                <input className="form-control" id="middlename" name="middlename" type="text" defaultValue=""/>
+              </div>
+              <div className="col">
+                <label className="form-label" htmlFor="lastname">*Last Name*: </label>
+                <input className="form-control" id="lastname" name="lastname" type="text" defaultValue=""/>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col">
+                <label className="form-label" htmlFor="password">*Password*: </label>
+                <input className="form-control" id="password" name="password" type="password" defaultValue=""/>
+              </div>            
+              <div className="col">
+                <label className="form-label" htmlFor="dateofbirth">*Date-Of-Birth*: </label>
+                <input className="form-control" id="dateofbirth" name="dateofbirth" type="date" defaultValue=""/>
               </div>
             </div>
             <div className="row">
