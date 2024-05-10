@@ -1,5 +1,6 @@
 .page-spinner{
 	display: flex;
+	background: whitesmoke;
 	justify-content: center;
 	align-items: center;
 	width: 100vw;
