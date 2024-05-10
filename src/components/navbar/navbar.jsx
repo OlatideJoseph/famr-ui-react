@@ -26,6 +26,15 @@ const NavBar = ({ auth=false }) => {
                 Home
               </Link>
             </li>
+            <li className="nav-item">
+              <Link
+                className={`nav-link ${matchedPath('/offered-courses/')? 'active': ''}`}
+                aria-current="page"
+                to="/offered-courses/"
+              >
+                Courses
+              </Link>
+            </li>
             {
               auth ?(
                 <>
@@ -45,15 +54,6 @@ const NavBar = ({ auth=false }) => {
                       to="/profile/"
                     >
                       Profile
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link
-                      className={`nav-link ${matchedPath('/offered-courses/')? 'active': ''}`}
-                      aria-current="page"
-                      to="/offered-courses/"
-                    >
-                      Courses
                     </Link>
                   </li>
                   <li className="nav-item" tabIndex="-1">
