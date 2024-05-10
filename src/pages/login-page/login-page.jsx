@@ -3,6 +3,7 @@ import NavBar from '../../components/navbar/navbar'
 import BootStrapButton from '../../components/buttons/bootstrap-button'
 
 const LoginPage = () => {
+  document.title = "Log In"
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(event)

@@ -4,6 +4,7 @@ import BootStrapButton from '../../components/buttons/bootstrap-button'
 import './sign-up.css'
 
 const SignUpPage = (props) => {
+  document.title = "Sign Up"
   const handleSubmit = (event) => {
     event.preventDefault()
     console.log("Submitted")
