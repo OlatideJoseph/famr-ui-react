@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
 .page-spinner{
 	display: flex;
 	background: whitesmoke;
@@ -7,4 +8,8 @@
 	height: 100vh;
 	overflow: hidden;
 	flex-direction: column;
+	font-family: "Fira Code", monospace;
+    font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
 }
