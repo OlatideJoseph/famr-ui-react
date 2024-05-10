@@ -9,14 +9,16 @@ const HomePage = React.lazy(() => (import('./pages/home-page/home-page')))
 
 import './App.css'
 
+const defaultUrl = 'https://nd2project.onrender.com/'
+
 const App = () => {
   return (
     <>
       <React.Suspense fallback={<PageSpinner/>}>
         <Routes>
           <Route path='/' element={<HomePage/>}/>
-          <Route path='/sign-in/' element={<LoginPage/>}/>
-          <Route path='/sign-up/' element={<SignUpPage/>}/>
+          <Route path='/sign-in/' element={<LoginPage defaultUrl={defaultUrl}/>}/>
+          <Route path='/sign-up/' element={<SignUpPage defaultUrl={defaultUrl}/>}/>
           <Route path='*' element={<NotFoundPage/>}/>
         </Routes>
       </React.Suspense>
