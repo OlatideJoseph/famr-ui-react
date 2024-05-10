@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 import './navbar.css'
 
-const NavBar = () => {
+const NavBar = ({ auth=false }) => {
   const path = window.location.pathname
   const matchedPath = (vpath) => (path == vpath)
 	return (
@@ -26,47 +26,65 @@ const NavBar = () => {
                 Home
               </Link>
             </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${matchedPath('/match/')? 'active': ''}`}
-                aria-current="page"
-                to="/match/"
-              >
-                Match
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${matchedPath('/sign-in/')? 'active': ''}`}
-                aria-current="page"
-                to="/sign-in/"
-              >
-                Log In
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${matchedPath('/profile/')? 'active': ''}`}
-                aria-current="page"
-                to="/profile/"
-              >
-                Profile
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${matchedPath('/offered-courses/')? 'active': ''}`}
-                aria-current="page"
-                to="/offered-courses/"
-              >
-                Courses
-              </Link>
-            </li>
-            <li className="nav-item" tabIndex="-1">
-              <button type="button" id="nav-bnt" className="auth nav-item  btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style={{display: "none"}}>
-                Logout
-              </button>
-            </li>
+            {
+              auth ?(
+                <>
+                  <li className="nav-item">
+                    <Link
+                      className={`nav-link ${matchedPath('/match/')? 'active': ''}`}
+                      aria-current="page"
+                      to="/match/"
+                    >
+                      Match
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className={`nav-link ${matchedPath('/profile/')? 'active': ''}`}
+                      aria-current="page"
+                      to="/profile/"
+                    >
+                      Profile
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className={`nav-link ${matchedPath('/offered-courses/')? 'active': ''}`}
+                      aria-current="page"
+                      to="/offered-courses/"
+                    >
+                      Courses
+                    </Link>
+                  </li>
+                  <li className="nav-item" tabIndex="-1">
+                    <button type="button" id="nav-bnt" className="auth nav-item  btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style={{display: "none"}}>
+                      Logout
+                    </button>
+                  </li>
+                </>
+              ):(
+                <>
+                  <li className="nav-item">
+                    <Link
+                      className={`nav-link ${matchedPath('/sign-in/')? 'active': ''}`}
+                      aria-current="page"
+                      to="/sign-in/"
+                    >
+                      Log In
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className={`nav-link ${matchedPath('/sign-up/')? 'active': ''}`}
+                      aria-current="page"
+                      to="/sign-up/"
+                    >
+                      Sign Up
+                    </Link>
+                  </li>
+                </>
+              )
+          }
           </ul>
         </div>
       </div>
