@@ -11,6 +11,7 @@ const OfferedCoursesPage = ({ defaultUrl, ...otherProps}) => {
     .then((resp) => resp.data)
     .then((data) => {
       setCourses(data['courses'])
+      console.log(data)
     })
   }, [])
 	return (
@@ -19,12 +20,26 @@ const OfferedCoursesPage = ({ defaultUrl, ...otherProps}) => {
       <div className='container-fluid col-md-8'>
         <h1>Courses</h1>
         <hr/>
-        <hr/>
         {
           courses.map((v) => (
             <blockquote key={v.key}>
               <h4>{ v.title }</h4>
-              <p>Requirements: </p>
+              <p className='course-requirements'>Requirements:{
+                v.requirements.map((sub)=>(
+                  <span
+                    className='sub'
+                    key={sub.key}
+                  >
+                    {sub.req}
+                  </span>
+                ))
+              }
+              </p>
+              <p>
+              Score in %: <span className='text-secondary'>
+                {v.score}
+              </span>
+              </p>
               <hr/>
             </blockquote>
           ))

@@ -1,26 +1,52 @@
 import * as React from 'react'
+import axios from 'axios'
 import NavBar from '../../components/navbar/navbar'
 import BootStrapButton from '../../components/buttons/bootstrap-button'
 
-const LoginPage = () => {
+const LoginPage = ({ defaultUrl, ...others }) => {
   document.title = "Log In"
   const [username, setUsername] = React.useState('')
-  const [password, setPassword] = React.useState('')
+  const [password, dispatchPassword] = React.useReducer((state, action)=>{
+    switch(action.type){
+      case ('SET_PASSWORD'):
+        return {
+          ...state,
+          value: event.target.value
+        }
+      default:
+        throw new Error()
+    }
+  }, {value: '', message: '', stateClass: '' })
+  /*handles username and it validation*/
   const handleUsername = (event) => {
     setUsername(event.target.value)
   }
+  /*handles password and it validation*/
   const handlePassword = (event) => {
-    setPassword(event.target.value)
+    /*stores the password*/
+    let currentPassword = event.target.value
+    dispatchPassword({
+      type : 'SET_PASSWORD',
+      payload : { value: currentPassword }
+    })
+    let reg = /([a-zA-Z0-9)(?!(*^$@#!))]){3, 8}/
+    if (currentPassword && reg.test(currentPassword) && !event.target.classList.contains('is-valid')){
+     event.target.classList.toggle('is-valid')
+     console.log(event.target)
+    }else if(event.target.classList.contains('is-valid')){
+      event.target.classList.toggle('is-valid')
+    }else{
+
+    }
   }
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event)
-    console.log("submitted")
+    axios.post(`${defaultUrl}login/`)
+    .then((resp)=> resp.data)
+    .then((data)=>{
+      console.log(data)
+    })
   }
-  /*Login Page Side Effect*/
-  React.useEffect(()=>{
-    console.log('side effect')
-  }, [username, password])
 	return (
     <div
       className='login-page'
@@ -37,7 +63,7 @@ const LoginPage = () => {
               </div>            
               <div className="col">
                 <label className="form-label" htmlFor="password">Password: </label>
-                <input className="form-control" onChange={handlePassword} id="password" name="password" required="" type="password"/>
+                <input className={`form-control`} onChange={handlePassword} id="password" name="password" required="" type="password"/>
               </div>
             </div>
             <div className="row">

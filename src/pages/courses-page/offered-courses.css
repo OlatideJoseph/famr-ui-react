@@ -1,0 +1,11 @@
+.sub {
+	background-color: #add8e6a3;
+	padding: 5px;
+	border-radius: 3px;
+}
+.course-requirements{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: nowrap;
+}
