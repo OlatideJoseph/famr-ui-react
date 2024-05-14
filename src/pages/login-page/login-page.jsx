@@ -1,6 +1,7 @@
 import * as React from 'react'
 import axios from 'axios'
 import NavBar from '../../components/navbar/navbar'
+import Alert from '../../components/alert/alert'
 import BootStrapButton from '../../components/buttons/bootstrap-button'
 
 const LoginPage = ({ defaultUrl, ...others }) => {
@@ -17,6 +18,23 @@ const LoginPage = ({ defaultUrl, ...others }) => {
         throw new Error()
     }
   }, {value: '', message: '', stateClass: '' })
+  /*The alert reducer*/
+  const [alert, alertDispatch] = React.useReducer((state, action) => {
+    switch (action.type){
+      case 'SHOW_ALERT':
+        return{
+          ...state,
+          ...action.payload
+        }
+      case 'CHANGE_ALERT_TYPE':
+        return {
+          ...state,
+          alertType: action.payload.alertType
+        }
+      default :
+        throw new Error()
+    }
+  }, {alertType: '', showAlert: false, message: 'message'})
   /*handles username and it validation*/
   const handleUsername = (event) => {
     setUsername(event.target.value)
@@ -41,10 +59,44 @@ const LoginPage = ({ defaultUrl, ...others }) => {
   }
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post(`${defaultUrl}login/`)
+    axios.post(`${defaultUrl}login/`,
+    event.target,
+    {
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    })
     .then((resp)=> resp.data)
     .then((data)=>{
-      console.log(data)
+      if (data.code === 200){
+        localStorage.setItem('refresh_token', data.refresh_token)
+        alertDispatch({
+          type: 'SHOW_ALERT',
+          payload: {
+            alertType: `alert-${data.msg[1]}`,
+            message: data.msg[1],
+            showAlert: true
+          }
+        })
+      }
+    }).catch((error)=>{
+      let {data} = error.response
+      alertDispatch({
+        type: 'SHOW_ALERT',
+        payload: {
+          alertType: `alert-${data.msg[1]}`,
+          message: data.msg[0],
+          showAlert: true
+        }
+      })
+    })
+  }
+  const handleAlertClose = () => {
+    alertDispatch({
+      type: 'SHOW_ALERT',
+      payload: {
+        showAlert: false
+      }
     })
   }
 	return (
@@ -53,6 +105,13 @@ const LoginPage = ({ defaultUrl, ...others }) => {
     >
       <NavBar/>
       <div className='container-fluid col-md-8'>
+        {
+          alert.showAlert ? (
+            <Alert alertType={alert.alertType} handleClose={handleAlertClose}>
+              {alert.message}
+            </Alert>
+          ): null
+        }
         <fieldset className="form card mt-3 bg-secondary text-light">
           <legend className="card-header text-center">Login Form</legend>
           <form method="post" className="card-body" onSubmit={ handleSubmit }>
