@@ -1,6 +1,7 @@
 import * as React from 'react'
 import axios from 'axios'
 import NavBar from '../../components/navbar/navbar'
+import ButtonSpinner from '../../components/spinners/button-spinner'
 import Alert from '../../components/alert/alert'
 import BootStrapButton from '../../components/buttons/bootstrap-button'
 
@@ -18,6 +19,7 @@ const LoginPage = ({ defaultUrl, ...others }) => {
         throw new Error()
     }
   }, {value: '', message: '', stateClass: '' })
+  const [isLoading, setIsLoading] = React.useState(false)
   /*The alert reducer*/
   const [alert, alertDispatch] = React.useReducer((state, action) => {
     switch (action.type){
@@ -59,6 +61,8 @@ const LoginPage = ({ defaultUrl, ...others }) => {
   }
   const handleSubmit = (event) => {
     event.preventDefault();
+    /*set is loading to true*/
+    setIsLoading(true)
     axios.post(`${defaultUrl}login/`,
     event.target,
     {
@@ -80,6 +84,7 @@ const LoginPage = ({ defaultUrl, ...others }) => {
           }
         })
       }
+      setIsLoading(false)
     }).catch((error)=>{
       let {data} = error.response
       alertDispatch({
@@ -90,6 +95,7 @@ const LoginPage = ({ defaultUrl, ...others }) => {
           showAlert: true
         }
       })
+      setIsLoading(false)
     })
   }
   const handleAlertClose = () => {
@@ -131,7 +137,9 @@ const LoginPage = ({ defaultUrl, ...others }) => {
                 className="btn-primary btn-sm mt-3"
                 type="submit"
               >
-                Authenticate Data
+                {
+                  isLoading ? (<ButtonSpinner/>): ('Authenticate Data')
+                }
               </BootStrapButton>
               <div className="card-footer text-center">
                 Create an account ? <a href="/sign-up/" className="link text-light">Sign up!</a>
