@@ -1,17 +1,21 @@
 import * as React from 'react'
 import axios from 'axios'
 import NavBar from '../../components/navbar/navbar'
+import InPageSpinner from '../../components/spinners/in-page-spinner'
 import './offered-courses.css'
 
 const OfferedCoursesPage = ({ defaultUrl, ...otherProps}) => {
   document.title = 'View | Lasustech | Course'
   const [courses, setCourses] = React.useState([])
+  const [isLoading, setIsLoading] = React.useState(false)
   React.useEffect(()=>{
+    setIsLoading(true)
     axios.get(`${defaultUrl}ajax/v1.0/offered-courses/`)
     .then((resp) => resp.data)
     .then((data) => {
       setCourses(data['courses'])
       console.log(data)
+      setIsLoading(false)
     })
   }, [])
 	return (
@@ -21,6 +25,7 @@ const OfferedCoursesPage = ({ defaultUrl, ...otherProps}) => {
         <h1>Courses</h1>
         <hr/>
         {
+          isLoading ? (<InPageSpinner/>):
           courses.map((v) => (
             <blockquote key={v.key}>
               <h4>{ v.title }</h4>
