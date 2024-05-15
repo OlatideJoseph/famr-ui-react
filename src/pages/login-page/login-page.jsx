@@ -63,7 +63,8 @@ const LoginPage = ({ defaultUrl, ...others }) => {
     event.target,
     {
       headers:{
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
       }
     })
     .then((resp)=> resp.data)
