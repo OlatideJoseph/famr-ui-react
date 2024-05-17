@@ -1,11 +1,12 @@
 import * as React from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import NavBar from '../../components/navbar/navbar'
 import ButtonSpinner from '../../components/spinners/button-spinner'
 import Alert from '../../components/alert/alert'
 import BootStrapButton from '../../components/buttons/bootstrap-button'
 
-const LoginPage = ({ defaultUrl, ...others }) => {
+const LoginPage = ({ user, defaultUrl, ...others }) => {
   document.title = "Log In"
   const [username, setUsername] = React.useState('')
   const [password, dispatchPassword] = React.useReducer((state, action)=>{
@@ -79,7 +80,7 @@ const LoginPage = ({ defaultUrl, ...others }) => {
           type: 'SHOW_ALERT',
           payload: {
             alertType: `alert-${data.msg[1]}`,
-            message: data.msg[1],
+            message: data.msg[0],
             showAlert: true
           }
         })

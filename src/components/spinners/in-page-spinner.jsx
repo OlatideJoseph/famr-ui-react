@@ -4,8 +4,8 @@ import './in-page-spinner.css'
 const InPageSpinner = (props) => {
 	return (
 		<div className='in-page-spinner'>
-			<div class="spinner-border text-dark" role="status">
-			  <span class="visually-hidden">Loading...</span>
+			<div className="spinner-border text-dark" role="status">
+			  <span className="visually-hidden">Loading...</span>
 			</div>
 		</div>
 	)
