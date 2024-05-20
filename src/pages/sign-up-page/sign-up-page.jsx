@@ -39,7 +39,7 @@ const SignUpPage = ({ user, defaultUrl, ...props}) => {
   }
 	return (
     <div className='sign-up-page'>
-      <NavBar/>
+      {/*<NavBar/>*/}
       <div className='container-fluid col-md-8'>
         <fieldset className="form card mt-3 bg-secondary text-light">
           <legend className="card-header text-center">Sign Up Form</legend>

@@ -1,9 +1,10 @@
 import * as React from 'react'
-import { Routes, Route } from 'react-router-dom'
 import axios from 'axios'
+import { Routes, Route } from 'react-router-dom'
 import NotFoundPage from './pages/error-pages/notfound-page'
 import OfferedCoursesPage from './pages/courses-page/offered-courses'
 import PageSpinner from './components/spinners/page-spinner'
+import NavBar from './components/navbar/navbar'
 
 const LoginPage = React.lazy(() => (import('./pages/login-page/login-page')))
 const SignUpPage = React.lazy(() => (import('./pages/sign-up-page/sign-up-page')))
@@ -31,8 +32,20 @@ const App = () => {
   React.useEffect(()=>{
     console.log(user)
   }, [user])
+  const logOut = () => {
+    axios.get(`${defaultUrl}log-out/?token=${localStorage.refresh_token}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.refresh_token}`
+      }
+    }).then(resp => resp.data)
+    .then(data => {
+      localStorage.removeItem('refresh_token')
+      setUser({})
+    })
+  }
   return (
     <>
+      <NavBar logOut={logOut} auth={ user ? true: false }/>
       <React.Suspense fallback={<PageSpinner/>}>
         <Routes>
           <Route path='/' element={<HomePage/>}/>

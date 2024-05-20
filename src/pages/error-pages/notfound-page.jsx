@@ -5,7 +5,7 @@ import './notfound.css'
 const NotFoundPage = () => {
   return (
     <div className='error-page'>
-      <NavBar/>
+      {/*<NavBar/>*/}
       <div className='container-fluid col-md-8'>
         <h1>Page Not Found !</h1>
       </div>

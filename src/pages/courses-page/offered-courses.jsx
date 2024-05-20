@@ -14,13 +14,12 @@ const OfferedCoursesPage = ({ defaultUrl, ...otherProps}) => {
     .then((resp) => resp.data)
     .then((data) => {
       setCourses(data['courses'])
-      console.log(data)
       setIsLoading(false)
     })
   }, [])
 	return (
     <div className='offered-courses'>
-      <NavBar/>
+      {/*<NavBar/>*/}
       <div className='container-fluid col-md-8'>
         <h1>Courses</h1>
         <hr/>

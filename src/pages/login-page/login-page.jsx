@@ -111,7 +111,7 @@ const LoginPage = ({ user, defaultUrl, ...others }) => {
     <div
       className='login-page'
     >
-      <NavBar/>
+      {/*<NavBar/>*/}
       <div className='container-fluid col-md-8'>
         {
           alert.showAlert ? (
