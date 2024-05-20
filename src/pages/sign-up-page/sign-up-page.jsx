@@ -1,13 +1,41 @@
 import * as React from 'react'
+import axios from 'axios'
 import NavBar from '../../components/navbar/navbar'
 import BootStrapButton from '../../components/buttons/bootstrap-button'
 import './sign-up.css'
 
-const SignUpPage = (props) => {
+const SignUpPage = ({ user, defaultUrl, ...props}) => {
   document.title = "Sign Up"
+  const [signUp, signUpDispatcher] = React.useReducer((state, action) => {
+    switch (action.type){
+      case 'SET_EMAIL':
+        return { ...state, email: action.payload.email }
+      case 'SET_USERNAME':
+        return { ...state, username: action.payload.username }
+      case 'SET_FIRSTNAME':
+        return { ...state, firstname: action.payload.firstname }
+      case 'SET_MIDDLENAME':
+        return { ...state, middlename: action.payload.middlename }
+      case 'SET_LASTNAME':
+        return { ...state, lastname: action.payload.lastname }
+      case 'SET_PASSWORD':
+        return { ...state, password: action.payload.password }
+      case 'DOB':
+        return { ...state, dob: action.payload.dob }
+      default :
+        throw new Error()
+    }
+  }, { email: '', username: '', firstname: '', middlename: '', lastname: '', password: '', dob: ''})
   const handleSubmit = (event) => {
-    event.preventDefault()
-    console.log("Submitted")
+    axios.post(
+    `${defaultUrl}sign-up/`,
+    event.target,
+    {
+      headers:{
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
+      }
+    })
   }
 	return (
     <div className='sign-up-page'>
