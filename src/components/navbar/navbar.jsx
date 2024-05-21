@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 import './navbar.css'
 
-const NavBar = ({ auth=false }) => {
+const NavBar = ({ auth=false, logOut=null }) => {
   const path = window.location.pathname
   const matchedPath = (vpath) => (path == vpath)
 	return (
@@ -40,9 +40,9 @@ const NavBar = ({ auth=false }) => {
                 <>
                   <li className="nav-item">
                     <Link
-                      className={`nav-link ${matchedPath('/match/')? 'active': ''}`}
+                      className={`nav-link ${matchedPath('/match-course/')? 'active': ''}`}
                       aria-current="page"
-                      to="/match/"
+                      to="/match-course/"
                     >
                       Match
                     </Link>
@@ -57,7 +57,7 @@ const NavBar = ({ auth=false }) => {
                     </Link>
                   </li>
                   <li className="nav-item" tabIndex="-1">
-                    <button type="button" id="nav-bnt" className="auth nav-item  btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style={{display: "none"}}>
+                    <button type="button" id="nav-bnt" className="auth nav-item  btn btn-primary" onClick={logOut} data-bs-toggle="modal" data-bs-target="#exampleModal">
                       Logout
                     </button>
                   </li>
