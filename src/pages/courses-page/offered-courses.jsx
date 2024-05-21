@@ -10,12 +10,17 @@ const OfferedCoursesPage = ({ defaultUrl, ...otherProps}) => {
   const [isLoading, setIsLoading] = React.useState(false)
   React.useEffect(()=>{
     setIsLoading(true)
-    axios.get(`${defaultUrl}ajax/v1.0/offered-courses/`)
-    .then((resp) => resp.data)
-    .then((data) => {
-      setCourses(data['courses'])
-      setIsLoading(false)
-    })
+    if (!localStorage.getItem('courses')){
+      axios.get(`${defaultUrl}ajax/v1.0/offered-courses/`)
+      .then((resp) => resp.data)
+      .then((data) => {
+        setCourses(data['courses'])
+        localStorage.setItem('courses', data)
+        setIsLoading(false)
+      })
+    } else{
+      setCourses(localStorage.getItem('courses')['courses'])
+    }
   }, [])
 	return (
     <div className='offered-courses'>

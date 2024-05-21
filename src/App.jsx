@@ -20,7 +20,7 @@ const App = () => {
   const [user, setUser] = React.useState({})
   React.useEffect(()=>{
     let token = localStorage.getItem("refresh_token")
-    if (token){
+    if (token && !localStorage.getItem('user')){
       axios.get(`${defaultUrl}ajax/v1.0/get-auth-data/`,
         {
           headers : {
@@ -31,9 +31,13 @@ const App = () => {
       .then(resp => resp.data)
       .then(data => {
         setUser(data)
+        /* stores the user data */
+        localStorage.setItem('user', data)
       }).catch(error => {
         console.log(error)
       })
+    }else{
+      setUser(localStorage.getItem('user'))
     }
   }, [])
   React.useEffect(()=>{
