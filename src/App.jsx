@@ -32,12 +32,12 @@ const App = () => {
       .then(data => {
         setUser(data)
         /* stores the user data */
-        localStorage.setItem('user', data)
+        localStorage.setItem('user', JSON.stringify(data))
       }).catch(error => {
         console.log(error)
       })
     }else{
-      setUser(localStorage.getItem('user'))
+      setUser(JSON.parse(localStorage.getItem('user')))
     }
   }, [])
   React.useEffect(()=>{
