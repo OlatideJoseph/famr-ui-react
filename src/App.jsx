@@ -14,7 +14,7 @@ const MatchCourses = React.lazy(() => (import('./pages/match-page/match-courses'
 
 import './App.css'
 
-const defaultUrl = 'https://nd2project.onrender.com/'
+const defaultUrl = 'http://localhost:5000/'
 
 const App = () => {
   const [user, setUser] = React.useState({})
@@ -50,7 +50,7 @@ const App = () => {
       }
     }).then(resp => resp.data)
     .then(data => {
-      localStorage.removeItem('refresh_token')
+      localStorage.clear()
       setUser({})
     })
   }

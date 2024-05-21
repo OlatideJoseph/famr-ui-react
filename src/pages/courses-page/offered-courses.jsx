@@ -15,11 +15,13 @@ const OfferedCoursesPage = ({ defaultUrl, ...otherProps}) => {
       .then((resp) => resp.data)
       .then((data) => {
         setCourses(data['courses'])
-        localStorage.setItem('courses', data)
+        localStorage.setItem('courses', JSON.stringify(data))
         setIsLoading(false)
       })
     } else{
-      setCourses(localStorage.getItem('courses')['courses'])
+      let data = JSON.parse(localStorage.getItem('courses'))
+      setCourses(data['courses'])
+      setIsLoading(false)
     }
   }, [])
 	return (
