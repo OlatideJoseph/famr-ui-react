@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import './home-page.css'
 
 const HomePage = (props) => {
+  document.title = 'Home Page'
   const navigate = useNavigate();
   const handleClick = () => {
     navigate('/sign-in/')

@@ -2,10 +2,13 @@ import * as React from 'react'
 import './match-courses.css'
 
 const MatchCourses = ({ user, defaultUrl }) => {
+  document.title = 'Match Course'
 	return (
-    <>
-      <h1>Match Course</h1>
-    </>
+    <div className='match-course'>
+      <div className='container-fluid col-md-8'>
+        <h1>Match Page Content</h1>
+      </div>
+    </div>
 	)
 }
 
