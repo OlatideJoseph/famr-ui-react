@@ -14,7 +14,7 @@ const MatchCourses = React.lazy(() => (import('./pages/match-page/match-courses'
 
 import './App.css'
 
-const defaultUrl = 'http://localhost:5000/'
+const defaultUrl = 'https://nd2project.onrender.com/'
 
 const App = () => {
   const [user, setUser] = React.useState({})
