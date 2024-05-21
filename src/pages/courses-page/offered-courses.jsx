@@ -28,7 +28,7 @@ const OfferedCoursesPage = ({ defaultUrl, ...otherProps}) => {
     <div className='offered-courses'>
       {/*<NavBar/>*/}
       <div className='container-fluid col-md-8'>
-        <h1>Courses</h1>
+        <h1>Courses we offer</h1>
         <hr/>
         {
           isLoading ? (<InPageSpinner/>):
@@ -38,7 +38,7 @@ const OfferedCoursesPage = ({ defaultUrl, ...otherProps}) => {
               <p className='course-requirements'>Requirements:{
                 v.requirements.map((sub)=>(
                   <span
-                    className='sub'
+                    className='sub mt-3'
                     key={sub.key}
                   >
                     {sub.req}

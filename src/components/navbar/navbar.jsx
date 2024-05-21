@@ -57,7 +57,7 @@ const NavBar = ({ auth=false, logOut=null }) => {
                     </Link>
                   </li>
                   <li className="nav-item" tabIndex="-1">
-                    <button type="button" id="nav-bnt" className="auth nav-item  btn btn-primary" onClick={logOut} data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" id="nav-bnt" className="btn btn-primary" onClick={logOut} data-bs-toggle="modal">
                       Logout
                     </button>
                   </li>

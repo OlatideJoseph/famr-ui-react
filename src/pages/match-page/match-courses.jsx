@@ -27,7 +27,7 @@ const MatchCourses = ({ user, defaultUrl }) => {
               </div> 
               <div className="col">
                 <label className="form-label" htmlFor="jamb_score">Jamb Score</label>
-                <input className="form-control" id="jamb_score" max="400" min="180" name="jamb_score"/>
+                <input className="form-control" id="jamb_score" max="400" min="180" type="number" name="jamb_score"/>
               </div>           
             </div>
             <div className="row">
