@@ -83,7 +83,7 @@ const App = () => {
                 (
                   <>
                     <NavBar logOut={logOut} auth={ user ? true: false }/>
-                    <SignUpPageUser user={user} defaultUrl={defaultUrl}/>
+                    <SignUpPage user={user} defaultUrl={defaultUrl}/>
                   </>
                 )
             }
