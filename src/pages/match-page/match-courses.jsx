@@ -93,7 +93,7 @@ const MatchCourses = ({ user, defaultUrl }) => {
                 <select className="form-select form-select-sm" id="course_name" name="course_name" required="">
                   <option value="">-------------</option>
                   {
-                    formData.courses.map((v)=>(
+                    formData?.courses?.map((v)=>(
                       <option key={v[0]} value={v[0]}>
                         {v[1]}
                       </option>
@@ -112,7 +112,7 @@ const MatchCourses = ({ user, defaultUrl }) => {
                 <select className="form-select form-select-sm" id="field1" name="field1" required="">
                   <option value="">-------------</option>
                   {
-                    formData.subjects.map((v)=>(
+                    formData?.subjects?.map((v)=>(
                       <option key={v[0]} value={v[0]}>
                         {v[1]}
                       </option>
@@ -125,7 +125,7 @@ const MatchCourses = ({ user, defaultUrl }) => {
                 <select className="form-select form-select-sm" id="grade_1" name="grade_1" required="">
                   <option value="">-------------</option>
                   {
-                    formData.gradePoint.map((v)=>(
+                    formData?.gradePoint?.map((v)=>(
                       <option key={v[0]} value={v[0]}>
                         {v[1]}
                       </option>
@@ -140,7 +140,7 @@ const MatchCourses = ({ user, defaultUrl }) => {
                 <select className="form-select form-select-sm" id="field2" name="field2" required="">
                   <option value="">-------------</option>
                   {
-                    formData.subjects.map((v)=>(
+                    formData?.subjects?.map((v)=>(
                       <option key={v[0]} value={v[0]}>
                         {v[1]}
                       </option>
@@ -153,7 +153,7 @@ const MatchCourses = ({ user, defaultUrl }) => {
                 <select className="form-select form-select-sm" id="grade_2" name="grade_2" required="">
                   <option value="">-------------</option>
                   {
-                    formData.gradePoint.map((v)=>(
+                    formData?.gradePoint?.map((v)=>(
                       <option key={v[0]} value={v[0]}>
                         {v[1]}
                       </option>
@@ -168,7 +168,7 @@ const MatchCourses = ({ user, defaultUrl }) => {
                 <select className="form-select form-select-sm" id="field3" name="field3" required="">
                   <option value="">-------------</option>
                   {
-                    formData.subjects.map((v)=>(
+                    formData?.subjects?.map((v)=>(
                       <option key={v[0]} value={v[0]}>
                         {v[1]}
                       </option>
@@ -181,7 +181,7 @@ const MatchCourses = ({ user, defaultUrl }) => {
                 <select className="form-select-sm form-select" id="grade_3" name="grade_3" required="">
                   <option value="">-------------</option>
                   {
-                    formData.gradePoint.map((v)=>(
+                    formData?.gradePoint?.map((v)=>(
                       <option key={v[0]} value={v[0]}>
                         {v[1]}
                       </option>
@@ -196,7 +196,7 @@ const MatchCourses = ({ user, defaultUrl }) => {
                 <select className="form-select form-select-sm" id="field4" name="field4" required="">
                   <option value="">-------------</option>
                   {
-                    formData.subjects.map((v)=>(
+                    formData?.subjects?.map((v)=>(
                       <option key={v[0]} value={v[0]}>
                         {v[1]}
                       </option>
@@ -209,7 +209,7 @@ const MatchCourses = ({ user, defaultUrl }) => {
                 <select className="form-select form-select-sm" id="grade_4" name="grade_4" required="">
                   <option value="">-------------</option>
                   {
-                    formData.gradePoint.map((v)=>(
+                    formData?.gradePoint?.map((v)=>(
                       <option key={v[0]} value={v[0]}>
                         {v[1]}
                       </option>
@@ -224,7 +224,7 @@ const MatchCourses = ({ user, defaultUrl }) => {
                 <select className="form-select form-select-sm" id="field5" name="field5" required="">
                   <option value="">-------------</option>
                   {
-                    formData.subjects.map((v)=>(
+                    formData?.subjects?.map((v)=>(
                       <option key={v[0]} value={v[0]}>
                         {v[1]}
                       </option>
@@ -237,7 +237,7 @@ const MatchCourses = ({ user, defaultUrl }) => {
                 <select className="form-select form-select-sm" id="grade_5" name="grade_5" required="">
                   <option value="">-------------</option>
                   {
-                    formData.gradePoint.map((v)=>(
+                    formData?.gradePoint?.map((v)=>(
                       <option key={v[0]} value={v[0]}>
                         {v[1]}
                       </option>
