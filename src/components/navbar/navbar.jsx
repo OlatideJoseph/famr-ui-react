@@ -1,14 +1,23 @@
 import * as React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import './navbar.css'
 
 const NavBar = ({ auth=false, logOut=null }) => {
   const path = window.location.pathname
+  const user = useSelector((state) => state.user)
   const matchedPath = (vpath) => (path == vpath)
 	return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark" id="nav">
       <div className="container ml-5">
-        <span id="lli" style={{display:"none"}}><img src="" alt="user-profile" className="bio-img" id="bio-img"/></span>
+        <span id="lli">
+          <img
+            alt="user-profile"
+            className="bio-img"
+            id="bio-img"
+            src={user?.img_path}
+          />
+        </span>
         <a className="navbar-brand text-info" href='/'>
           \recommender
         </a>
