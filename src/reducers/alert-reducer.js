@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
 	alertType: 'primary',
-	message: '',
+	messages: [
+	],
 	showAlert: false,
 }
 

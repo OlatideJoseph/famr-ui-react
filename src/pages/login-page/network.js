@@ -18,7 +18,6 @@ export const submitLoginForm = async (target) => {
     return resp.data	
 }
 
-console.log(submitLoginForm)
 
 export const handleSubmit = (dispatch, target) => {
 	submitLoginForm(target)

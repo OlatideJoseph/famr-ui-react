@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie'
 import axios from 'axios'
 
 export const defaultUrl = "https://nd2project.onrender.com/"
@@ -15,10 +16,10 @@ export const getUserFromAPI = async (token) => {
 }
 
 export const logOutUser = async (token) => {
-	let logOutResp = await axios.get(`${defaultUrl}log-out/?token=${localStorage.refresh_token}`, {
+	let logOutResp = await axios.get(`${defaultUrl}log-out/?token=${token}`, {
     headers: {
       Authorization: `Bearer ${localStorage.refresh_token}`
     }
   })
-  localStorage.clear()
+  Cookies.remove('refresh_token')
 }
