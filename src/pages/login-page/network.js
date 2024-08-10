@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import {
-	storeUser
+	storeUser, setLoading
 } from '../../reducers/user-reducer'
 import { defaultUrl, getUserFromAPI } from '../../network'
 
@@ -20,6 +20,7 @@ export const submitLoginForm = async (target) => {
 
 
 export const handleSubmit = (dispatch, target) => {
+	dispatch(setLoading(true))
 	submitLoginForm(target)
 	.then((data)=>{
       if (data.code === 200){
@@ -34,5 +35,6 @@ export const handleSubmit = (dispatch, target) => {
       }
     }).catch((error)=>{
       let { data } = error.response
+      dispatch(setLoading(false))
     })
 }

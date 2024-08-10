@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { useSelector } from 'react-redux'
+import Cookies from 'js-cookie'
+import { useSelector, useDispatch } from 'react-redux'
 import { logOutUser } from '../network'
 
 import Redirect from '../pages-component/inheritted/redirect-component'
@@ -12,23 +13,40 @@ const Element = ({
 	redirectWhenAuth=false
 }) => {
 	const user = useSelector((state) => state.user)
+	const courses = useSelector((state) => state.courses)
+	const dispatch = useDispatch()
+	React.useEffect(() => {
+		if (courses.error){
+			alert('Course Error')
+		}
+		if (user.error){
+			alert('User Error')
+		}
+	}, [user.error, courses.error])
+
 	if (redirectWhenAuth && user.authenticated){
 		return (
 			<Redirect to='/match-course/'/>
 		)
+	}else{
+		return (
+			<React.Fragment>
+				{
+					showNav ? (
+						<NavBar logOut={
+							() => {
+								let token = Cookies.get('refresh_token')
+								logOutUser(token, dispatch)
+							}
+						} auth={ user.authenticated }/>
+					): null
+				}
+				{
+					children
+				}
+			</React.Fragment>
+		)
 	}
-	return (
-		<React.Fragment>
-			{
-				showNav ? (
-					<NavBar logOut={() => logOutUser()} auth={ user.authenticated }/>
-				): null
-			}
-			{
-				children
-			}
-		</React.Fragment>
-	)
 }
 
 const ProtectedElement = (
@@ -36,6 +54,7 @@ const ProtectedElement = (
 	showNav=true, children
 }) => {
 	const user = useSelector((state) => state.user)
+	const dispatch = useDispatch()
 	if (!user.authenticated){
 		return (<Redirect to='/sign-in/'/>)
 	}else{
@@ -43,7 +62,13 @@ const ProtectedElement = (
 			<React.Fragment>
 				{
 					showNav ? (
-						<NavBar logOut={() => logOutUser()} auth={ user.authenticated }/>
+						<NavBar
+							logOut={() => {
+								let token = Cookies.get('refresh_token')
+								logOutUser(token, dispatch)
+							}}
+							auth={ user.authenticated }
+						/>
 					): null
 				}
 				{
@@ -63,7 +88,7 @@ export const createRoute = (
 		element: (
 			<Element
 				showNav={showNav}
-				redirectWhenAuth={false}
+				redirectWhenAuth={redirectWhenAuth}
 			>
 				<Component/>
 			</Element>

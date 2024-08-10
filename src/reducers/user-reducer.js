@@ -30,12 +30,22 @@ const userSlice = createSlice({
 	reducers: {
 		storeUser: (state, action) => {
 			state.data = action.payload
+			if (action.payload?.email){
+				state.authenticated = true
+				state.loading = false
+			}
 		},
 		authenticated: (state, action) => {
 			state.authenticated = true
 		},
-		loading: (state, action) => {
+		setLoading: (state, action) => {
 			state.loading = action.payload
+		},
+		logOut: (state, action) =>{
+			state.authenticated = false
+			state.data = {
+
+			}
 		}
 	},
 	extraReducers: (builder) => {
@@ -43,23 +53,24 @@ const userSlice = createSlice({
 		.addCase(fetchGlobalUserData.pending, (state, action) => {
 			state.loading = true;
 			state.authenticated = false
+			state.error = null
 		})
 		.addCase(fetchGlobalUserData.fulfilled, (state, action) => {
 			state.loading = false
-			state.authenticated = false
 			if (action.payload?.email){
 				state.data = action.payload
 				state.authenticated = true
+				state.error = null
 			}
 		})
 		.addCase(fetchGlobalUserData.rejected, (state, action) => {
 			state.authenticated = false
-			state.error = action?.error?.message
+			state.error = action?.error
 			state.loading = false
 		})
 	}
 })
 
-export const { storeUser, authenticated } = userSlice.actions
+export const { storeUser, authenticated, setLoading, logOut } = userSlice.actions
 
 export default userSlice.reducer

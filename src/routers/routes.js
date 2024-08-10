@@ -17,7 +17,7 @@ const OfferedCoursesPage = React.lazy(() => (import('../pages/courses-page/offer
 
 export const routes = createBrowserRouter([
     createRoute('*', NotFoundPage),
-    createRoute('/', HomePage, true, false),
+    createRoute('/', HomePage, false, false),
     createRoute('/sign-in/', LoginPage, true),
     createRoute('/sign-up/', SignUpPage, true),
     createRoute('/offered-courses/', OfferedCoursesPage),
