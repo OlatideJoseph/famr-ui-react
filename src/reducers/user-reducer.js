@@ -8,7 +8,7 @@ const initialState = {
 
 	},
 	authenticated: false,
-	loading: false,
+	loading: true,
 	error: null
 }
 
@@ -51,17 +51,16 @@ const userSlice = createSlice({
 	extraReducers: (builder) => {
 		builder
 		.addCase(fetchGlobalUserData.pending, (state, action) => {
-			state.loading = true;
 			state.authenticated = false
 			state.error = null
 		})
 		.addCase(fetchGlobalUserData.fulfilled, (state, action) => {
-			state.loading = false
 			if (action.payload?.email){
 				state.data = action.payload
 				state.authenticated = true
 				state.error = null
 			}
+			state.loading = false
 		})
 		.addCase(fetchGlobalUserData.rejected, (state, action) => {
 			state.authenticated = false

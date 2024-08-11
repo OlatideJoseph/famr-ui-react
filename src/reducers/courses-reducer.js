@@ -6,7 +6,7 @@ import getCoursesFromAPI from '../pages/courses-page/network'
 const initialState = {
 	data: [
 	],
-	loading: false,
+	loading: true,
 	error: null
 }
 
@@ -14,10 +14,8 @@ export const fetchGlobalCoursesData = createAsyncThunk(
 	'globalCoursesData/fetchGlobalCoursesData',
 	async () => {
 		let token = Cookies.get('refresh_token')
-		if (token){
-			let courses = await getCoursesFromAPI(token)
-			return courses.courses
-		}
+		let courses = await getCoursesFromAPI(token)
+		return courses.courses
 		return initialState.data
 	}
 )

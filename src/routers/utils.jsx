@@ -24,7 +24,13 @@ const Element = ({
 		}
 	}, [user.error, courses.error])
 
-	if (redirectWhenAuth && user.authenticated){
+	if (user.loading){
+		return (
+			<></>
+		)
+	}
+
+	if (redirectWhenAuth && user.authenticated && !user.loading){
 		return (
 			<Redirect to='/match-course/'/>
 		)
@@ -55,6 +61,11 @@ const ProtectedElement = (
 }) => {
 	const user = useSelector((state) => state.user)
 	const dispatch = useDispatch()
+	if (user.loading){
+		return (
+			<></>
+		)
+	}
 	if (!user.authenticated){
 		return (<Redirect to='/sign-in/'/>)
 	}else{
