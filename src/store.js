@@ -1,12 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { userReducer, alertReducer, coursesReducer } from './reducers'
+import { userReducer, alertReducer, coursesReducer, matchReducer } from './reducers'
 
 
 const store = configureStore({
 	reducer: {
 		user: userReducer,
 		alert: alertReducer,
-		courses: coursesReducer
+		courses: coursesReducer,
+		match: matchReducer
 	}
 })
 

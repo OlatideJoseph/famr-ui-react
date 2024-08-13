@@ -16,7 +16,6 @@ export const fetchGlobalCoursesData = createAsyncThunk(
 		let token = Cookies.get('refresh_token')
 		let courses = await getCoursesFromAPI(token)
 		return courses.courses
-		return initialState.data
 	}
 )
 

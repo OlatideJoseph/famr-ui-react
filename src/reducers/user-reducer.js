@@ -66,6 +66,9 @@ const userSlice = createSlice({
 			state.authenticated = false
 			state.error = action?.error
 			state.loading = false
+			if (state.error.name === 'AxiosError'){
+				Cookies.remove('refresh_token')
+			}
 		})
 	}
 })
